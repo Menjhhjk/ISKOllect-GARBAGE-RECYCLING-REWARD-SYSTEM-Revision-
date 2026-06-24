@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.iskollect.controller.RewardRedemptionController">
+   <children>
+      <Label layoutX="180.0" layoutY="47.0" text="REWARDS CATALOG">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="706.0" layoutY="14.0" text="Balance for">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="studentNameLabel" layoutX="551.0" layoutY="40.0" text="Clint Andrei Commendador">
+         <font>
+            <Font name="Arial Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="balanceLabel" layoutX="549.0" layoutY="61.0" text="143 points">
+         <font>
+            <Font name="Arial Bold" size="48.0" />
+         </font>
+      </Label>
+      <Label layoutX="449.0" layoutY="116.0" text="Redeeming a coupon will be deducted to your balance">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="375.0" layoutY="572.0" onMouseClicked="#closePopup" styleClass="link-label" text="Go Back">
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="133.0" fitWidth="150.0" layoutX="22.0" layoutY="8.0">
+         <image>
+            <Image url="@../assets/coupon.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="344.0" layoutY="110.0" mnemonicParsing="false" onAction="#redeemSelected" prefHeight="27.0" prefWidth="88.0" styleClass="secondary-button" text="Redeem" />
+      <TableView fx:id="rewardTable" layoutX="13.0" layoutY="156.0" prefHeight="403.0" prefWidth="775.0">
+         <columns>
+            <TableColumn fx:id="rewardNameColumn" prefWidth="220.79998779296875" text="Reward Name" />
+            <TableColumn fx:id="rewardDescriptionColumn" prefWidth="273.60003662109375" text="Description" />
+            <TableColumn fx:id="rewardPointsColumn" prefWidth="113.60009765625" text="Points" />
+            <TableColumn fx:id="redeemActionColumn" prefWidth="163.20000000000005" text="Action" />
+         </columns>
+      </TableView>
+   </children>
+</AnchorPane>

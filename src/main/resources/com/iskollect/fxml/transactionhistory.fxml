@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #bef28a;" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.iskollect.controller.TransactionController">
+   <children>
+      
+                  <VBox prefHeight="768.0" prefWidth="300.0">
+               <children>
+                  <VBox prefHeight="154.0" prefWidth="300.0">
+                     <children>
+                        <HBox prefHeight="47.0" prefWidth="300.0" />
+                        <HBox alignment="CENTER" prefHeight="55.0" prefWidth="300.0">
+                           <children>
+                              <ImageView fitHeight="68.0" fitWidth="274.0">
+                                 <image>
+                                    <Image preserveRatio="true" requestedHeight="68.0" requestedWidth="274.0" smooth="true" url="@../assets/bf780c16-c3ed-449f-b2ab-6ceda0ca0e53.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="26.0" prefWidth="300.0">
+                           <children>
+                              <Label text="Garbage Recycling Rewards System">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <HBox alignment="CENTER" prefHeight="123.0" prefWidth="300.0">
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                  </HBox>
+                  <HBox alignment="CENTER" onMouseClicked="#goDashboard" prefHeight="62.0" prefWidth="300.0" style="-fx-cursor: hand;">
+                     <children>
+                        <Label mouseTransparent="true" text="Dashboard">
+                           <font>
+                              <Font name="Arial Bold" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <styleClass>
+                        <String fx:value="box" />
+                        <String fx:value="nav-row" />
+                        <String fx:value="somet" />
+                     </styleClass>
+                  </HBox>
+                  <HBox alignment="CENTER" onMouseClicked="#goRewards" prefHeight="62.0" prefWidth="300.0" style="-fx-cursor: hand;">
+                     <children>
+                        <Label mouseTransparent="true" text="Rewards Catalog">
+                           <font>
+                              <Font name="Arial Bold" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <styleClass>
+                        <String fx:value="nav-row" />
+                        <String fx:value="box" />
+                        <String fx:value="somet" />
+                     </styleClass>
+                  </HBox>
+                  <VBox prefHeight="304.0" prefWidth="300.0">
+               <children>
+                  <HBox alignment="CENTER" onMouseClicked="#goHistory" prefHeight="62.0" prefWidth="300.0" style="-fx-cursor: hand; -fx-background-color: #1a601d;" stylesheets="@../style.css">
+                     <children>
+                        <Label mouseTransparent="true" text="Transaction History" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Bold" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <styleClass>
+                        <String fx:value="box" />
+                        <String fx:value="somet" />
+                        <String fx:value="nav-row" />
+                     </styleClass>
+                  </HBox>
+               </children></VBox>
+            <HBox alignment="CENTER" onMouseClicked="#handleLogout" prefHeight="62.0" prefWidth="300.0" style="-fx-cursor: hand;" stylesheets="@../style.css">
+               <children>
+                  <Label mouseTransparent="true" text="Log out">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+               <styleClass>
+                  <String fx:value="box" />
+                  <String fx:value="somet" />
+                  <String fx:value="nav-row" />
+               </styleClass>
+            </HBox>
+               </children>
+            </VBox>
+      <Pane layoutX="300.0" layoutY="10.0" prefHeight="748.0" prefWidth="1058.0" style="-fx-background-color: white; -fx-background-radius: 15;">
+         <children>
+            <Label layoutX="56.0" layoutY="39.0" text="Transaction History">
+               <font>
+                  <Font name="Arial Bold" size="48.0" />
+               </font>
+            </Label>
+            <Label layoutX="58.0" layoutY="94.0" text="A complete, detailed log of past redemptions, redeemed coupons, and point deductions.">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Pane layoutX="56.0" layoutY="132.0" prefHeight="171.0" prefWidth="467.0" style="-fx-background-color: #f5fbef; -fx-background-radius: 20;" styleClass="border">
+               <children>
+                  <Label layoutX="234.0" layoutY="14.0" text="Total bottles">
+                     <font>
+                        <Font name="Arial Bold" size="36.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="341.0" layoutY="56.0" text="Collected">
+                     <font>
+                        <Font name="Arial Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="totalBottlesLabel" layoutX="395.0" layoutY="83.0" text="##">
+                     <font>
+                        <Font name="Arial Bold" size="48.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="208.0" layoutY="140.0" text="Physically surrendered and verified" textFill="#24ae22">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="171.0" fitWidth="170.0">
+                     <image>
+                        <Image url="@../assets/bottle.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane layoutX="552.0" layoutY="132.0" prefHeight="171.0" prefWidth="467.0" style="-fx-background-color: #f5fbef; -fx-background-radius: 20;" styleClass="border">
+               <children>
+                  <Label layoutX="201.0" layoutY="14.0" text="Total Coupons">
+                     <font>
+                        <Font name="Arial Bold" size="36.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="331.0" layoutY="56.0" text="Redeemed">
+                     <font>
+                        <Font name="Arial Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="totalRedemptionsLabel" layoutX="396.0" layoutY="81.0" text="##">
+                     <font>
+                        <Font name="Arial Bold" size="48.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="239.0" layoutY="136.0" text="Fully processed and receipted" textFill="#24ae22">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="171.0" fitWidth="180.0" layoutX="14.0">
+                     <image>
+                        <Image url="@../assets/coupon.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane layoutX="58.0" layoutY="321.0" prefHeight="47.0" prefWidth="966.0" style="-fx-background-color: #dadada; -fx-background-radius: 10;">
+               <children>
+                  <Label layoutX="14.0" layoutY="11.0" text="From:">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <DatePicker fx:id="fromDate" layoutX="64.0" layoutY="10.0" prefHeight="27.0" prefWidth="146.0" promptText="mm/dd/yy" />
+                  <Label layoutX="263.0" layoutY="11.0" text="To:">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <DatePicker fx:id="toDate" layoutX="295.0" layoutY="10.0" prefHeight="27.0" prefWidth="146.0" promptText="mm/dd/yy" />
+                  <Button layoutX="844.0" layoutY="7.0" mnemonicParsing="false" onAction="#clearFilters" prefHeight="34.0" prefWidth="108.0" text="X Clear Filters" />
+               </children>
+            </Pane>
+            <TableView fx:id="transactionTable" layoutX="58.0" layoutY="381.0" prefHeight="359.0" prefWidth="966.0">
+              <columns>
+                <TableColumn fx:id="historyStudentColumn" prefWidth="448.7999572753906" text="Student Name" />
+                  <TableColumn fx:id="historyDateColumn" prefWidth="184.800048828125" text="Date &amp; Time" />
+                  <TableColumn fx:id="historyTypeColumn" prefWidth="223.20001220703125" text="Transaction" />
+                  <TableColumn fx:id="historyPointsColumn" prefWidth="106.800048828125" text="Points" />
+              </columns>
+            </TableView>
+         </children>
+      </Pane>
+      </children>
+</AnchorPane>

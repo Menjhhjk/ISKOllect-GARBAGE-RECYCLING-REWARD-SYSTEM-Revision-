@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="531.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.iskollect.controller.AddRewardController">
+   <children>
+      <AnchorPane prefHeight="531.0" prefWidth="400.0" stylesheets="@../style.css">
+         <children>
+            <Label layoutX="128.0" layoutY="79.0" text="Add Coupon">
+               <font>
+                  <Font name="Arial Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="39.0" layoutY="144.0" text="Reward Name">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="38.0" layoutY="226.0" text="Points Cost">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="rewardNameField" layoutX="37.0" layoutY="171.0" prefHeight="42.0" prefWidth="326.0" promptText="Coupon Name" styleClass="searchinput-field" />
+            <TextField fx:id="pointsField" layoutX="37.0" layoutY="256.0" prefHeight="42.0" prefWidth="326.0" promptText="How many points to redeem this coupon" styleClass="searchinput-field" />
+            <Button layoutX="38.0" layoutY="459.0" mnemonicParsing="false" onAction="#clearForm" prefHeight="42.0" prefWidth="154.0" styleClass="clear-button" text="Clear" />
+            <Button layoutX="210.0" layoutY="459.0" mnemonicParsing="false" onAction="#addReward" prefHeight="42.0" prefWidth="154.0" styleClass="login-button" text="Add">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+            <Button layoutX="365.0" layoutY="11.0" mnemonicParsing="false" onAction="#closePopup" styleClass="icon-button" text="X" />
+            <Label layoutX="38.0" layoutY="309.0" text="Description">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextArea fx:id="descriptionField" layoutX="37.0" layoutY="340.0" prefHeight="94.0" prefWidth="326.0" promptText="Reward Inclusions" wrapText="true">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextArea>
+            <ImageView fitHeight="60.0" fitWidth="70.0" layoutX="164.0" layoutY="18.0">
+               <image>
+                  <Image url="@../assets/coupon.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="100.0" layoutY="105.0" text="Add New Coupon and its details">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

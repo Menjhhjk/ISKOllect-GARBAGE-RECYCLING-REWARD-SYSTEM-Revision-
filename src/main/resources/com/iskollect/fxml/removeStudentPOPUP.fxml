@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="273.0" prefWidth="371.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.iskollect.controller.PassivePopupController">
+   <children>
+      <AnchorPane layoutX="2.0" layoutY="2.0" prefHeight="273.0" prefWidth="371.0" stylesheets="@../style.css">
+         <children>
+            <ImageView fitHeight="61.0" fitWidth="82.0" layoutX="145.0" layoutY="14.0">
+               <image>
+                  <Image url="@../assets/Del.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="83.0" layoutY="84.0" text="Remove Student?">
+               <font>
+                  <Font name="Arial Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="38.0" layoutY="145.0" text="'[Student Name]' from the Students Record">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="68.0" layoutY="124.0" text="Are you sure you want to remove">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="162.0" layoutY="168.0" text="Table?">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Button layoutX="24.0" layoutY="212.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="154.0" styleClass="clear-button" text="Cancel" />
+            <Button layoutX="194.0" layoutY="212.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="154.0" styleClass="delete-button" text="Delete">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

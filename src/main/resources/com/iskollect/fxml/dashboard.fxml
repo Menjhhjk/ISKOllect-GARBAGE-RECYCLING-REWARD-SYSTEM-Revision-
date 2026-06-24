@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #bef28a;" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.iskollect.controller.DashboardController">
+   <children>
+      <VBox prefHeight="768.0" prefWidth="300.0">
+         <children>
+            <VBox prefHeight="154.0" prefWidth="300.0">
+               <children>
+                  <HBox prefHeight="47.0" prefWidth="300.0" />
+                  <HBox alignment="CENTER" prefHeight="55.0" prefWidth="300.0">
+                     <children>
+                        <ImageView fitHeight="68.0" fitWidth="274.0">
+                           <image>
+                                    <Image preserveRatio="true" requestedHeight="68.0" requestedWidth="274.0" smooth="true" url="@../assets/bf780c16-c3ed-449f-b2ab-6ceda0ca0e53.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="26.0" prefWidth="300.0">
+                     <children>
+                        <Label text="Garbage Recycling Rewards System">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <HBox alignment="CENTER" onMouseClicked="#goToBottleRecords" prefHeight="123.0" prefWidth="300.0" />
+            <HBox alignment="CENTER" onMouseClicked="#goDashboard" prefHeight="62.0" prefWidth="300.0" style="-fx-cursor: hand; -fx-background-color: #1a601d;" stylesheets="@../style.css">
+               <children>
+                  <Label mouseTransparent="true" text="Dashboard" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+               <styleClass>
+                  <String fx:value="box" />
+                  <String fx:value="somet" />
+                  <String fx:value="nav-row" />
+               </styleClass>
+            </HBox>
+            <HBox alignment="CENTER" onMouseClicked="#goRewards" prefHeight="62.0" prefWidth="300.0" style="-fx-cursor: hand;" stylesheets="@../style.css">
+               <children>
+                  <Label mouseTransparent="true" text="Rewards Catalog">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+               <styleClass>
+                  <String fx:value="box" />
+                  <String fx:value="somet" />
+                  <String fx:value="nav-row" />
+               </styleClass>
+            </HBox>
+            <VBox prefHeight="304.0" prefWidth="300.0">
+               <children>
+                  <HBox alignment="CENTER" onMouseClicked="#goHistory" prefHeight="62.0" prefWidth="300.0" style="-fx-cursor: hand;" stylesheets="@../style.css">
+                     <children>
+                        <Label mouseTransparent="true" text="Transaction History">
+                           <font>
+                              <Font name="Arial Bold" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <styleClass>
+                        <String fx:value="box" />
+                        <String fx:value="somet" />
+                        <String fx:value="nav-row" />
+                     </styleClass>
+                  </HBox>
+               </children></VBox>
+            <HBox alignment="CENTER" onMouseClicked="#handleLogout" prefHeight="62.0" prefWidth="300.0" style="-fx-cursor: hand;" stylesheets="@../style.css">
+               <children>
+                  <Label mouseTransparent="true" text="Log out">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+               <styleClass>
+                  <String fx:value="box" />
+                  <String fx:value="somet" />
+                  <String fx:value="nav-row" />
+               </styleClass>
+            </HBox>
+         </children>
+      </VBox>
+      <Pane layoutX="300.0" layoutY="10.0" prefHeight="748.0" prefWidth="1058.0" style="-fx-background-color: white; -fx-background-radius: 15;">
+         <children>
+            <Label layoutX="63.0" layoutY="39.0" text="Pagbati, ISKOllect Admin!">
+               <font>
+                  <Font name="Arial Bold" size="48.0" />
+               </font>
+            </Label>
+            <Label layoutX="63.0" layoutY="94.0" text="Empower a greener campus today. Process student submissions, approve rewards, and monitor">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="862.0" layoutY="47.0" text="June 18, 2026 - 11:11 PM">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="63.0" layoutY="116.0" text="system transactions here.">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="searchField" layoutX="63.0" layoutY="168.0" prefHeight="47.0" prefWidth="484.0" promptText="Search student name here..." styleClass="searchinput-field">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <Button fx:id="addStudentButton" layoutX="821.0" layoutY="153.0" mnemonicParsing="false" onAction="#addStudent" prefHeight="62.0" prefWidth="196.0" text="+ Add Student" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Button>
+            <TableView fx:id="studentTable" layoutX="63.0" layoutY="230.0" prefHeight="469.0" prefWidth="957.0">
+              <columns>
+                <TableColumn fx:id="studentNameColumn" prefWidth="434.3999938964844" text="Student Name" />
+                  <TableColumn fx:id="bottleColumn" prefWidth="162.4000244140625" text="Total Bottles" />
+                  <TableColumn fx:id="pointsColumn" prefWidth="168.800048828125" text="Total Points" />
+                  <TableColumn fx:id="actionColumn" prefWidth="189.5999755859375" text="Action" />
+              </columns>
+            </TableView>
+            <Label layoutX="286.0" layoutY="714.0" text="Admin must search and select a student's name from the list to start a transaction.">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="35.0" fitWidth="38.0" layoutX="248.0" layoutY="706.0">
+               <image>
+                  <Image url="@../assets/Warning.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="26.0" fitWidth="24.0" layoutX="907.0" layoutY="707.0" onMouseClicked="#editSelectedStudent" styleClass="simage-view">
+               <image>
+                  <Image url="@../assets/Edit.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="26.0" fitWidth="24.0" layoutX="939.0" layoutY="707.0" onMouseClicked="#deleteSelectedStudent" styleClass="simage-view">
+               <image>
+                  <Image url="@../assets/delete.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
