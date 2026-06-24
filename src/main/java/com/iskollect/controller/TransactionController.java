@@ -11,12 +11,16 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public final class TransactionController extends ControllerSupport {
     private static final DateTimeFormatter FORMAT =
         DateTimeFormatter.ofPattern("MMM d, yyyy - h:mm a");
+    private static final DateTimeFormatter DATE_TIME_FORMAT =
+        DateTimeFormatter.ofPattern("MMMM d, yyyy - h:mm a");
 
+    @FXML private Label dateTimeLabel;
     @FXML private Label totalBottlesLabel;
     @FXML private Label totalRedemptionsLabel;
     @FXML private DatePicker fromDate;
@@ -57,6 +61,7 @@ public final class TransactionController extends ControllerSupport {
 
     private void refresh() {
         try {
+            dateTimeLabel.setText(LocalDateTime.now().format(DATE_TIME_FORMAT));
             var all = AppContext.service().transactions(null);
             LocalDate from = fromDate.getValue();
             LocalDate to = toDate.getValue();

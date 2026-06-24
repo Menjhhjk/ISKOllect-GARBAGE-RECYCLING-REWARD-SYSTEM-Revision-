@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane prefHeight="273.0" prefWidth="371.0" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.iskollect.controller.PassivePopupController">
+<AnchorPane prefHeight="273.0" prefWidth="371.0" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.iskollect.controller.RemoveRewardController">
    <children>
       <ImageView fitHeight="61.0" fitWidth="82.0" layoutX="145.0" layoutY="14.0">
          <image>
@@ -20,7 +20,7 @@
             <Font name="Arial Bold" size="24.0" />
          </font>
       </Label>
-      <Label layoutX="66.0" layoutY="145.0" text="'[Reward Name]' from the Reward">
+      <Label fx:id="rewardNameLabel" alignment="CENTER" layoutX="24.0" layoutY="145.0" prefWidth="323.0" text="[Reward Name]">
          <font>
             <Font size="16.0" />
          </font>
@@ -30,13 +30,13 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <Label layoutX="155.0" layoutY="166.0" text="Catalog?">
+      <Label alignment="CENTER" layoutX="24.0" layoutY="166.0" prefWidth="323.0" text="from the Reward Catalog?">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Button layoutX="24.0" layoutY="212.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="154.0" styleClass="clear-button" text="Cancel" />
-      <Button layoutX="194.0" layoutY="212.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="154.0" styleClass="delete-button" text="Delete">
+      <Button layoutX="24.0" layoutY="212.0" mnemonicParsing="false" onAction="#cancel" prefHeight="42.0" prefWidth="154.0" styleClass="clear-button" text="Cancel" />
+      <Button layoutX="194.0" layoutY="212.0" mnemonicParsing="false" onAction="#deleteReward" prefHeight="42.0" prefWidth="154.0" styleClass="delete-button" text="Delete">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>

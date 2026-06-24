@@ -7,24 +7,24 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="200.0" prefWidth="400.0" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.iskollect.controller.PassivePopupController">
+<AnchorPane prefHeight="200.0" prefWidth="400.0" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.iskollect.controller.RegistrationSuccessController">
    <children>
       <Label layoutX="59.0" layoutY="85.0" text="Registration Successful!">
          <font>
             <Font name="Arial Bold" size="24.0" />
          </font>
       </Label>
-      <Label layoutX="52.0" layoutY="122.0" text="Welcome to ISKollect! [Student Name] has been">
+      <Label fx:id="studentLineLabel" alignment="CENTER" layoutX="20.0" layoutY="122.0" prefWidth="360.0" text="Welcome to ISKollect! Student has been">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="59.0" layoutY="142.0" text="registered and their first [Number] bottles are">
+      <Label fx:id="bottlesLineLabel" alignment="CENTER" layoutX="20.0" layoutY="142.0" prefWidth="360.0" text="registered and their first bottles are">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="58.0" layoutY="161.0" text="recorded. Their starting balance is [Points] pts.">
+      <Label fx:id="balanceLineLabel" alignment="CENTER" layoutX="20.0" layoutY="161.0" prefWidth="360.0" text="recorded. Their starting balance is 0 pts.">
          <font>
             <Font size="14.0" />
          </font>
@@ -34,6 +34,6 @@
             <Image url="@../assets/registersuccess.png" />
          </image>
       </ImageView>
-      <Button layoutX="371.0" layoutY="5.0" mnemonicParsing="false" styleClass="icon-button" text="X" />
+      <Button layoutX="371.0" layoutY="5.0" mnemonicParsing="false" onAction="#closePopup" styleClass="icon-button" text="X" />
    </children>
 </AnchorPane>

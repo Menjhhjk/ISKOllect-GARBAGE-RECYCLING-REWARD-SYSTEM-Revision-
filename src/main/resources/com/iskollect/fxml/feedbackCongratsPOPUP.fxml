@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="350.0" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.iskollect.controller.PassivePopupController">
+<AnchorPane prefHeight="400.0" prefWidth="350.0" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.iskollect.controller.RedemptionSuccessController">
    <children>
       <Label layoutX="90.0" layoutY="181.0" text="Congratulations for">
          <font>
@@ -19,12 +19,12 @@
             <Font name="Arial Bold" size="20.0" />
          </font>
       </Label>
-      <Label layoutX="100.0" layoutY="231.0" text="[Type of Coupon]">
+      <Label fx:id="rewardNameLabel" alignment="CENTER" layoutX="25.0" layoutY="231.0" prefWidth="300.0" text="Reward Coupon">
          <font>
             <Font name="Arial Bold" size="20.0" />
          </font>
       </Label>
-      <Label layoutX="99.0" layoutY="267.0" text="June 21, 2026 - 12:55 AM">
+      <Label fx:id="dateTimeLabel" alignment="CENTER" layoutX="25.0" layoutY="267.0" prefWidth="300.0" text="Loading date...">
          <font>
             <Font size="15.0" />
          </font>
@@ -44,11 +44,11 @@
             <Image url="@../assets/weehee.png" />
          </image>
       </ImageView>
-      <Label layoutX="43.0" layoutY="311.0" text="The Student's current balance [Num of Points]">
+      <Label fx:id="balanceLabel" alignment="CENTER" layoutX="20.0" layoutY="311.0" prefWidth="310.0" text="The student's current balance is 0 pts.">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Button layoutX="321.0" layoutY="7.0" mnemonicParsing="false" styleClass="icon-button" text="X" />
+      <Button layoutX="321.0" layoutY="7.0" mnemonicParsing="false" onAction="#closePopup" styleClass="icon-button" text="X" />
    </children>
 </AnchorPane>

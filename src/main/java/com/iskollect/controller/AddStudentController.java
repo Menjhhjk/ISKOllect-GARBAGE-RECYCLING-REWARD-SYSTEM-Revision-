@@ -1,6 +1,7 @@
 package com.iskollect.controller;
 
 import com.iskollect.AppContext;
+import com.iskollect.AppNavigator;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -33,12 +34,12 @@ public final class AddStudentController extends ControllerSupport {
                 studentNameField.getText(), bottleCountField.getText()
             );
             AppContext.selectStudent(student);
-            showSuccess(
-                student.name() + " was registered with "
-                    + student.bottleCount() + " bottles and "
-                    + student.points().toPlainString() + " points."
-            );
+            PopupContext.registration(student);
             close(studentNameField.getScene().getWindow());
+            AppNavigator.showModal(
+                "feedbackRegisterSuccessPOPUP.fxml",
+                "Registration Successful"
+            );
         } catch (Exception exception) {
             showError(exception);
         }

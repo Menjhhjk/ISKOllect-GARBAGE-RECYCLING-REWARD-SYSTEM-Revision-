@@ -7,24 +7,24 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="350.0" prefWidth="400.0" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.iskollect.controller.PassivePopupController">
+<AnchorPane prefHeight="350.0" prefWidth="400.0" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.iskollect.controller.RedeemConfirmationController">
    <children>
       <Label layoutX="65.0" layoutY="204.0" text="Are you sure you want to">
          <font>
             <Font name="Arial Bold" size="24.0" />
          </font>
       </Label>
-      <Label layoutX="87.0" layoutY="231.0" text="redeem this coupon?">
+      <Label fx:id="rewardNameLabel" alignment="CENTER" layoutX="28.0" layoutY="231.0" prefWidth="350.0" text="redeem this coupon?">
          <font>
             <Font name="Arial Bold" size="24.0" />
          </font>
       </Label>
-      <Button layoutX="223.0" layoutY="271.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="155.0" styleClass="login-button" text="Yes">
+      <Button layoutX="223.0" layoutY="271.0" mnemonicParsing="false" onAction="#confirm" prefHeight="46.0" prefWidth="155.0" styleClass="login-button" text="Yes">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button layoutX="28.0" layoutY="271.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="166.0" styleClass="clear-button" text="No" textFill="#000000ed">
+      <Button layoutX="28.0" layoutY="271.0" mnemonicParsing="false" onAction="#cancel" prefHeight="46.0" prefWidth="166.0" styleClass="clear-button" text="No" textFill="#000000ed">
          <font>
             <Font size="18.0" />
          </font>

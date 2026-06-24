@@ -1,11 +1,11 @@
--- ISKOllect v2 - PostgreSQL / Supabase schema
--- Run this script in an empty PostgreSQL database before starting the application.
+-- ISKOllect v2 - PostgreSQL local database schema
+-- Create an empty database named iskollect_db, connect to it, then run this script.
 
 BEGIN;
 
 CREATE TABLE users (
     user_id       SERIAL PRIMARY KEY,
-    username      VARCHAR(50)  NOT NULL,
+    username      VARCHAR(50) NOT NULL,
     password_hash VARCHAR(255) NOT NULL,
     CONSTRAINT users_username_not_blank CHECK (BTRIM(username) <> '')
 );
@@ -39,12 +39,11 @@ CREATE TABLE points_ledger (
         REFERENCES students(student_id) ON DELETE CASCADE,
     points_change    NUMERIC(10,2) NOT NULL,
     source           VARCHAR(30) NOT NULL,
-    ref_id           INTEGER,
+    ref_id           INTEGER NOT NULL,
     transaction_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT points_ledger_source_valid
         CHECK (source IN ('bottle_submission', 'redemption')),
-    CONSTRAINT points_ledger_change_nonzero CHECK (points_change <> 0),
-    CONSTRAINT points_ledger_reference_present CHECK (ref_id IS NOT NULL)
+    CONSTRAINT points_ledger_change_nonzero CHECK (points_change <> 0)
 );
 
 CREATE TABLE rewards_catalog (
@@ -91,5 +90,5 @@ VALUES
 
 COMMIT;
 
--- No administrator is seeded with a shared/default password.
--- Start the application and choose "Create the first administrator".
+-- No administrator is seeded with a shared or plaintext password.
+-- Start the application and select "Create the first administrator".

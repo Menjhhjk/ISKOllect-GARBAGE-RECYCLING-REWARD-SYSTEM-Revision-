@@ -87,6 +87,16 @@ On the login screen, choose **Create the first administrator**. This option work
 .\mvnw.cmd -DskipTests package
 ```
 
+## Test the database connection
+
+Run the standalone read-only diagnostic:
+
+```powershell
+.\mvnw.cmd -q compile exec:java "-Dexec.mainClass=com.iskollect.TestDatabaseConnection"
+```
+
+It checks the PostgreSQL connection, required tables and columns, and current row counts without modifying data.
+
 ## Architecture
 
 ```text
@@ -119,6 +129,8 @@ src/main/java/com/iskollect/
 The service validates input and applies business rules. The repository owns JDBC queries and transactions. Bottle submissions and redemptions update their detail record, student balance, and points ledger atomically.
 
 `Main.java` is a plain launcher so Maven-aware IDEs can run it without triggering Java's special JavaFX launcher behavior. `IskollectApplication.java` contains the JavaFX application lifecycle.
+
+The included VS Code workspace settings select the local JDK 21 installation and compile the Maven project before launching `com.iskollect.Main`.
 
 ## FXML interface
 

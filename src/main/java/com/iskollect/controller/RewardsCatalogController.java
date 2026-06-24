@@ -7,12 +7,21 @@ import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 public final class RewardsCatalogController extends ControllerSupport {
+    private static final DateTimeFormatter DATE_TIME_FORMAT =
+        DateTimeFormatter.ofPattern("MMMM d, yyyy - h:mm a");
+
+    @FXML private Label dateTimeLabel;
+    @FXML private Label redeemedCountLabel;
     @FXML private TableView<Reward> rewardTable;
     @FXML private TableColumn<Reward, String> rewardNameColumn;
     @FXML private TableColumn<Reward, String> descriptionColumn;
@@ -74,10 +83,10 @@ public final class RewardsCatalogController extends ControllerSupport {
             showError(new IllegalArgumentException("Select a reward first."));
             return;
         }
+        RewardEditorContext.select(reward);
         try {
-            AppContext.service().deleteReward(reward);
+            AppNavigator.showModal("removeRewardPOPUP.fxml", "Remove Reward");
             refresh();
-            showSuccess("Reward deleted.");
         } catch (Exception exception) {
             showError(exception);
         }
@@ -102,6 +111,11 @@ public final class RewardsCatalogController extends ControllerSupport {
             rewardTable.setItems(FXCollections.observableArrayList(
                 AppContext.service().rewards()
             ));
+            int redemptions = AppContext.service().dashboardStats().redemptions();
+            redeemedCountLabel.setText(
+                redemptions + (redemptions == 1 ? " Coupon" : " Coupons")
+            );
+            dateTimeLabel.setText(LocalDateTime.now().format(DATE_TIME_FORMAT));
         } catch (Exception exception) {
             showError(exception);
         }

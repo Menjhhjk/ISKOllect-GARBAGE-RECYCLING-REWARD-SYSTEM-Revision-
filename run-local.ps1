@@ -2,6 +2,12 @@ $ErrorActionPreference = "Stop"
 
 $projectRoot = Split-Path -Parent $MyInvocation.MyCommand.Path
 $envFile = Join-Path $projectRoot ".env"
+$preferredJdk = "C:\Program Files\Java\jdk-21.0.11"
+
+if (Test-Path -LiteralPath (Join-Path $preferredJdk "bin\java.exe")) {
+    $env:JAVA_HOME = $preferredJdk
+    $env:Path = (Join-Path $preferredJdk "bin") + ";" + $env:Path
+}
 
 if (-not (Test-Path -LiteralPath $envFile)) {
     throw "Missing local configuration file: $envFile"

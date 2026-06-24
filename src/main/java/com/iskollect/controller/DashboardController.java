@@ -7,6 +7,7 @@ import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -14,8 +15,14 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public final class DashboardController extends ControllerSupport {
+    private static final DateTimeFormatter DATE_TIME_FORMAT =
+        DateTimeFormatter.ofPattern("MMMM d, yyyy - h:mm a");
+
+    @FXML private Label dateTimeLabel;
     @FXML private TextField searchField;
     @FXML private Button addStudentButton;
     @FXML private TableView<Student> studentTable;
@@ -92,10 +99,10 @@ public final class DashboardController extends ControllerSupport {
             showError(new IllegalArgumentException("Select a student first."));
             return;
         }
+        AppContext.selectStudent(student);
         try {
-            AppContext.service().deleteStudent(student);
+            AppNavigator.showModal("removeStudentPOPUP.fxml", "Remove Student");
             refresh();
-            showSuccess("Student record deleted.");
         } catch (Exception exception) {
             showError(exception);
         }
@@ -116,6 +123,7 @@ public final class DashboardController extends ControllerSupport {
 
     private void refresh() {
         try {
+            dateTimeLabel.setText(LocalDateTime.now().format(DATE_TIME_FORMAT));
             studentTable.setItems(FXCollections.observableArrayList(
                 AppContext.service().students(
                     searchField == null ? null : searchField.getText()
