@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="350.0" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.iskollect.controller.RedemptionSuccessController">
+<AnchorPane prefHeight="400.0" prefWidth="350.0" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.iskollect.controller.RedemptionSuccessController">
    <children>
       <Label layoutX="90.0" layoutY="181.0" text="Congratulations for">
          <font>
@@ -49,6 +48,5 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <Button layoutX="321.0" layoutY="7.0" mnemonicParsing="false" onAction="#closePopup" styleClass="icon-button" text="X" />
    </children>
 </AnchorPane>

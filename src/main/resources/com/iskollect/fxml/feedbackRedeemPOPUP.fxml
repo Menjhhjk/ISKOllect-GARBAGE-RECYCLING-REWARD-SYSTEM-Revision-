@@ -7,31 +7,31 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="350.0" prefWidth="400.0" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.iskollect.controller.RedeemConfirmationController">
+<AnchorPane prefHeight="350.0" prefWidth="434.0" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.iskollect.controller.RedeemConfirmationController">
    <children>
-      <Label layoutX="65.0" layoutY="204.0" text="Are you sure you want to">
+      <Label layoutX="109.0" layoutY="201.0" text="Are you sure you want to">
          <font>
-            <Font name="Arial Bold" size="24.0" />
+            <Font name="Arial Bold" size="18.0" />
          </font>
       </Label>
-      <Label fx:id="rewardNameLabel" alignment="CENTER" layoutX="28.0" layoutY="231.0" prefWidth="350.0" text="redeem this coupon?">
+      <Label fx:id="rewardNameLabel" alignment="CENTER" layoutX="37.0" layoutY="229.0" prefHeight="22.0" prefWidth="372.0" text="redeem this coupon?">
          <font>
-            <Font name="Arial Bold" size="24.0" />
+            <Font name="Arial Bold" size="18.0" />
          </font>
       </Label>
-      <Button layoutX="223.0" layoutY="271.0" mnemonicParsing="false" onAction="#confirm" prefHeight="46.0" prefWidth="155.0" styleClass="login-button" text="Yes">
+      <Button layoutX="245.0" layoutY="271.0" mnemonicParsing="false" onAction="#confirm" prefHeight="46.0" prefWidth="155.0" styleClass="login-button" text="Yes">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button layoutX="28.0" layoutY="271.0" mnemonicParsing="false" onAction="#cancel" prefHeight="46.0" prefWidth="166.0" styleClass="clear-button" text="No" textFill="#000000ed">
+      <Button layoutX="39.0" layoutY="271.0" mnemonicParsing="false" onAction="#cancel" prefHeight="46.0" prefWidth="166.0" styleClass="clear-button" text="No" textFill="#000000ed">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <ImageView fitHeight="178.0" fitWidth="176.0" layoutX="112.0" layoutY="26.0">
+      <ImageView fitHeight="183.0" fitWidth="200.0" layoutX="123.0" layoutY="21.0">
          <image>
-            <Image url="@../assets/snack.png" />
+            <Image url="@../assets/coupon.png" />
          </image>
       </ImageView>
    </children>

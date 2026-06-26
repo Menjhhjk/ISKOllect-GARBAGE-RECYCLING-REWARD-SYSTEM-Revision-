@@ -42,7 +42,7 @@ CREATE TABLE points_ledger (
     ref_id           INTEGER NOT NULL,
     transaction_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT points_ledger_source_valid
-        CHECK (source IN ('bottle_submission', 'redemption')),
+        CHECK (source IN ('bottle_submission', 'redemption', 'admin_adjustment')),
     CONSTRAINT points_ledger_change_nonzero CHECK (points_change <> 0)
 );
 

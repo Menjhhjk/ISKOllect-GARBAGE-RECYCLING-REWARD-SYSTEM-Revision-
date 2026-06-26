@@ -88,6 +88,30 @@ public final class IskollectService {
         repository.renameStudent(student.id(), validateName(name, "Student name"));
     }
 
+    /**
+     * Admin correction to a student's name and bottle count (Edit Student
+     * popup). Recomputes points from the new bottle count at the standard
+     * rate. Unlike a bottle submission, 0 is an allowed bottle count here
+     * since this corrects the running total rather than recording a new
+     * physical drop-off.
+     */
+    public Student updateStudent(Student student, String name, String bottleCountInput)
+            throws SQLException {
+        requireSelection(student, "student");
+        String cleanName = validateName(name, "Student name");
+        int bottles = parseNonNegativeBottleCount(bottleCountInput);
+        BigDecimal points = calculatePoints(bottles);
+        return repository.updateStudentDetails(student.id(), cleanName, bottles, points);
+    }
+
+    public static BigDecimal previewPoints(String bottleCountInput) {
+        try {
+            return calculatePoints(parseNonNegativeBottleCount(bottleCountInput));
+        } catch (RuntimeException exception) {
+            return null;
+        }
+    }
+
     public void deleteStudent(Student student) throws SQLException {
         requireSelection(student, "student");
         repository.deleteStudent(student.id());
@@ -202,6 +226,24 @@ public final class IskollectService {
             throw new IllegalArgumentException(
                 "A submission must contain at least " + MINIMUM_BOTTLES + " bottles."
             );
+        }
+        if (bottles > 100_000) {
+            throw new IllegalArgumentException("Bottle count is unusually large.");
+        }
+        return bottles;
+    }
+
+    private static int parseNonNegativeBottleCount(String bottleInput) {
+        int bottles;
+        try {
+            bottles = Integer.parseInt(
+                bottleInput == null ? "" : bottleInput.trim()
+            );
+        } catch (NumberFormatException exception) {
+            throw new IllegalArgumentException("Bottle count must be a whole number.");
+        }
+        if (bottles < 0) {
+            throw new IllegalArgumentException("Bottle count cannot be negative.");
         }
         if (bottles > 100_000) {
             throw new IllegalArgumentException("Bottle count is unusually large.");

@@ -5,7 +5,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -14,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.iskollect.controller.RewardsCatalogController">
+<AnchorPane prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.iskollect.controller.RewardsCatalogController">
    <children>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #bef28a;" stylesheets="@../style.css">
          <children>
@@ -123,7 +122,7 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <TableView fx:id="rewardTable" layoutX="63.0" layoutY="302.0" prefHeight="401.0" prefWidth="957.0">
+                  <TableView fx:id="rewardTable" layoutX="63.0" layoutY="302.0" prefHeight="401.0" prefWidth="957.0" styleClass="red-table">
                      <columns>
                         <TableColumn fx:id="rewardNameColumn" prefWidth="220.79998779296875" text="Reward Name" />
                         <TableColumn fx:id="descriptionColumn" prefWidth="351.20001220703125" text="Description" />
@@ -156,17 +155,6 @@
                         </Label>
                      </children>
                   </Pane>
-                  <ToggleButton layoutX="781.0" layoutY="708.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="59.0" text="YES" />
-                  <ImageView fitHeight="26.0" fitWidth="24.0" layoutX="925.0" layoutY="711.0" onMouseClicked="#editSelectedReward" styleClass="simage-view">
-                     <image>
-                        <Image url="@../assets/Edit.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="26.0" fitWidth="24.0" layoutX="965.0" layoutY="712.0" onMouseClicked="#deleteSelectedReward" styleClass="simage-view">
-                     <image>
-                        <Image url="@../assets/delete.png" />
-                     </image>
-                  </ImageView>
                   <Button layoutX="827.0" layoutY="173.0" mnemonicParsing="false" onAction="#addReward" prefHeight="62.0" prefWidth="184.0" text="+ Add Coupon" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="18.0" />

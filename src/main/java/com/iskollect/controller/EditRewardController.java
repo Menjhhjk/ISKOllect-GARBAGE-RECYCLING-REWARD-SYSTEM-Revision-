@@ -20,7 +20,7 @@ public final class EditRewardController extends ControllerSupport {
         rewardNameField.setText(reward.name());
         pointsField.setText(reward.pointsRequired().toPlainString());
         descriptionField.setText(reward.description());
-        availabilityToggle.setSelected(!reward.available());
+        availabilityToggle.setSelected(reward.available());
         updateAvailabilityText();
     }
 
@@ -32,7 +32,7 @@ public final class EditRewardController extends ControllerSupport {
                 rewardNameField.getText(),
                 descriptionField.getText(),
                 pointsField.getText(),
-                !availabilityToggle.isSelected()
+                availabilityToggle.isSelected()
             );
             showSuccess("Reward updated.");
             close(rewardNameField.getScene().getWindow());
@@ -56,7 +56,7 @@ public final class EditRewardController extends ControllerSupport {
     @FXML
     private void updateAvailabilityText() {
         availabilityToggle.setText(
-            availabilityToggle.isSelected() ? "NO" : "YES"
+            availabilityToggle.isSelected() ? "YES" : "NO"
         );
     }
 }

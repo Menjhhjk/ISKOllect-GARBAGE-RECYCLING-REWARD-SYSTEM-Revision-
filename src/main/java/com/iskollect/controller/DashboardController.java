@@ -6,13 +6,17 @@ import com.iskollect.model.Student;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -21,6 +25,10 @@ import java.time.format.DateTimeFormatter;
 public final class DashboardController extends ControllerSupport {
     private static final DateTimeFormatter DATE_TIME_FORMAT =
         DateTimeFormatter.ofPattern("MMMM d, yyyy - h:mm a");
+    private static final Image EDIT_ICON =
+        new Image(DashboardController.class.getResource("/com/iskollect/assets/Edit.png").toExternalForm());
+    private static final Image DELETE_ICON =
+        new Image(DashboardController.class.getResource("/com/iskollect/assets/delete.png").toExternalForm());
 
     @FXML private Label dateTimeLabel;
     @FXML private TextField searchField;
@@ -46,15 +54,27 @@ public final class DashboardController extends ControllerSupport {
             new ReadOnlyObjectWrapper<>(data.getValue())
         );
         actionColumn.setCellFactory(column -> new TableCell<>() {
-            private final Button assist = new Button("Assist");
+            private final ImageView editView = new ImageView(EDIT_ICON);
+            private final ImageView deleteView = new ImageView(DELETE_ICON);
+            private final HBox actions = new HBox(8, editView, deleteView);
             {
-                assist.getStyleClass().add("secondary-button");
-                assist.setOnAction(event -> openStudent(getItem()));
+                editView.setFitWidth(20);
+                editView.setFitHeight(20);
+                editView.getStyleClass().add("simage-view");
+                editView.setOnMouseClicked(event -> editStudent(getItem()));
+
+                deleteView.setFitWidth(20);
+                deleteView.setFitHeight(20);
+                deleteView.getStyleClass().add("simage-view");
+                deleteView.setOnMouseClicked(event -> deleteStudent(getItem()));
+
+                actions.setAlignment(Pos.CENTER);
+                actions.setPadding(new Insets(0, 4, 0, 4));
             }
             @Override
             protected void updateItem(Student student, boolean empty) {
                 super.updateItem(student, empty);
-                setGraphic(empty || student == null ? null : assist);
+                setGraphic(empty || student == null ? null : actions);
             }
         });
         studentTable.setOnMouseClicked(event -> {
@@ -76,11 +96,8 @@ public final class DashboardController extends ControllerSupport {
         }
     }
 
-    @FXML
-    private void editSelectedStudent(MouseEvent event) {
-        Student student = studentTable.getSelectionModel().getSelectedItem();
+    private void editStudent(Student student) {
         if (student == null) {
-            showError(new IllegalArgumentException("Select a student first."));
             return;
         }
         AppContext.selectStudent(student);
@@ -92,11 +109,8 @@ public final class DashboardController extends ControllerSupport {
         }
     }
 
-    @FXML
-    private void deleteSelectedStudent(MouseEvent event) {
-        Student student = studentTable.getSelectionModel().getSelectedItem();
+    private void deleteStudent(Student student) {
         if (student == null) {
-            showError(new IllegalArgumentException("Select a student first."));
             return;
         }
         AppContext.selectStudent(student);

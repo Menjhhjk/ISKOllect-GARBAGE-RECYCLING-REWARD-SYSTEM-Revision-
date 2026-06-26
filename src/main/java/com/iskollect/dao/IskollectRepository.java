@@ -229,6 +229,51 @@ public final class IskollectRepository {
         }
     }
 
+    public Student updateStudentDetails(
+        int studentId,
+        String name,
+        int newBottleCount,
+        BigDecimal newPoints
+    ) throws SQLException {
+        try (Connection connection = connections.open()) {
+            connection.setAutoCommit(false);
+            try {
+                BigDecimal previousPoints = lockStudent(connection, studentId);
+                BigDecimal pointsDelta = newPoints.subtract(previousPoints);
+
+                String sql = """
+                    UPDATE students
+                    SET student_name = ?, bottle_count = ?, points_earned = ?
+                    WHERE student_id = ?
+                    RETURNING student_id, student_name, bottle_count,
+                              points_earned, registration_date
+                    """;
+                Student updated;
+                try (PreparedStatement statement = connection.prepareStatement(sql)) {
+                    statement.setString(1, name);
+                    statement.setInt(2, newBottleCount);
+                    statement.setBigDecimal(3, newPoints);
+                    statement.setInt(4, studentId);
+                    try (ResultSet result = statement.executeQuery()) {
+                        if (!result.next()) {
+                            throw new IllegalArgumentException("Student not found.");
+                        }
+                        updated = mapStudent(result);
+                    }
+                }
+
+                if (pointsDelta.signum() != 0) {
+                    insertLedger(connection, studentId, pointsDelta, "admin_adjustment", studentId);
+                }
+                connection.commit();
+                return updated;
+            } catch (Exception exception) {
+                rollback(connection, exception);
+                throw exception;
+            }
+        }
+    }
+
     public void deleteStudent(int studentId) throws SQLException {
         try (Connection connection = connections.open();
              PreparedStatement statement =
@@ -336,7 +381,7 @@ public final class IskollectRepository {
             connection.setAutoCommit(false);
             try {
                 BigDecimal balance = lockStudent(connection, studentId);
-                BigDecimal cost = rewardCost(connection, rewardId);
+                BigDecimal cost = availableRewardCost(connection, rewardId);
                 if (balance.compareTo(cost) < 0) {
                     throw new IllegalStateException(
                         "Insufficient points. Available: " + balance.stripTrailingZeros().toPlainString()
@@ -380,6 +425,18 @@ public final class IskollectRepository {
                 FROM redemptions r
                 JOIN students s ON s.student_id = r.student_id
                 JOIN rewards_catalog rc ON rc.reward_id = r.reward_id
+
+                UNION ALL
+
+                SELECT
+                    pl.transaction_date AS occurred_at,
+                    s.student_name,
+                    'Admin correction' AS type,
+                    'Bottle count adjustment' AS details,
+                    pl.points_change AS points_change
+                FROM points_ledger pl
+                JOIN students s ON s.student_id = pl.student_id
+                WHERE pl.source = 'admin_adjustment'
             ) history
             """ + filter + " ORDER BY occurred_at DESC";
         List<TransactionEntry> entries = new ArrayList<>();
@@ -437,14 +494,21 @@ public final class IskollectRepository {
         }
     }
 
-    private static BigDecimal rewardCost(Connection connection, int rewardId)
+    private static BigDecimal availableRewardCost(Connection connection, int rewardId)
             throws SQLException {
-        String sql = "SELECT points_required FROM rewards_catalog WHERE reward_id = ?";
+        String sql = """
+            SELECT points_required, available
+            FROM rewards_catalog
+            WHERE reward_id = ?
+            """;
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setInt(1, rewardId);
             try (ResultSet result = statement.executeQuery()) {
                 if (!result.next()) {
                     throw new IllegalArgumentException("Reward not found.");
+                }
+                if (!result.getBoolean("available")) {
+                    throw new IllegalStateException("Reward is currently unavailable.");
                 }
                 return result.getBigDecimal("points_required");
             }

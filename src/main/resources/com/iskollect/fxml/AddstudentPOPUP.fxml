@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="450.0" prefWidth="400.0" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.iskollect.controller.AddStudentController">
+<AnchorPane prefHeight="450.0" prefWidth="400.0" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.iskollect.controller.AddStudentController">
    <children>
       <Label layoutX="86.0" layoutY="95.0" text="Student Registration">
          <font>
@@ -40,6 +40,5 @@
             <Image url="@../assets/registration.png" />
          </image>
       </ImageView>
-      <Button layoutX="365.0" layoutY="11.0" mnemonicParsing="false" onAction="#closePopup" styleClass="icon-button" text="X" />
    </children>
 </AnchorPane>

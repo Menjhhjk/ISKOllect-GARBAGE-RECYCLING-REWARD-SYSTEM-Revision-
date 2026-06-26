@@ -9,8 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="531.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.iskollect.controller.AddRewardController">
+<AnchorPane prefHeight="531.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.iskollect.controller.AddRewardController">
    <children>
       <AnchorPane prefHeight="531.0" prefWidth="400.0" stylesheets="@../style.css">
          <children>
@@ -37,7 +36,6 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Button>
-            <Button layoutX="365.0" layoutY="11.0" mnemonicParsing="false" onAction="#closePopup" styleClass="icon-button" text="X" />
             <Label layoutX="38.0" layoutY="309.0" text="Description">
                <font>
                   <Font size="14.0" />

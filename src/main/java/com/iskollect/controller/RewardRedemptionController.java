@@ -58,11 +58,6 @@ public final class RewardRedemptionController extends ControllerSupport {
     }
 
     @FXML
-    private void redeemSelected() {
-        redeem(rewardTable.getSelectionModel().getSelectedItem());
-    }
-
-    @FXML
     private void closePopup() {
         close(rewardTable.getScene().getWindow());
     }

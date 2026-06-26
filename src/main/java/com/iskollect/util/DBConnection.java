@@ -10,6 +10,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public final class DBConnection {
+    private static final String DB_URL_KEY = "ISKOLLECT_DB_URL";
+    private static final String DB_USER_KEY = "ISKOLLECT_DB_USER";
+    private static final String DB_PASSWORD_KEY = "ISKOLLECT_DB_PASSWORD";
+
     private static final Map<String, String> LOCAL_VALUES = loadLocalValues();
 
     private DBConnection() {
@@ -17,9 +21,9 @@ public final class DBConnection {
 
     public static Connection getConnection() throws SQLException {
         return DriverManager.getConnection(
-            required("ISKOLLECT_DB_URL"),
-            required("ISKOLLECT_DB_USER"),
-            required("ISKOLLECT_DB_PASSWORD")
+            required(DB_URL_KEY),
+            required(DB_USER_KEY),
+            required(DB_PASSWORD_KEY)
         );
     }
 

@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="200.0" prefWidth="400.0" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.iskollect.controller.RegistrationSuccessController">
+<AnchorPane prefHeight="200.0" prefWidth="400.0" stylesheets="@../style.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.iskollect.controller.RegistrationSuccessController">
    <children>
       <Label layoutX="59.0" layoutY="85.0" text="Registration Successful!">
          <font>
@@ -34,6 +33,5 @@
             <Image url="@../assets/registersuccess.png" />
          </image>
       </ImageView>
-      <Button layoutX="371.0" layoutY="5.0" mnemonicParsing="false" onAction="#closePopup" styleClass="icon-button" text="X" />
    </children>
 </AnchorPane>

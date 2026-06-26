@@ -153,16 +153,6 @@
                   <Image url="@../assets/Warning.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="26.0" fitWidth="24.0" layoutX="907.0" layoutY="707.0" onMouseClicked="#editSelectedStudent" styleClass="simage-view">
-               <image>
-                  <Image url="@../assets/Edit.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="26.0" fitWidth="24.0" layoutX="939.0" layoutY="707.0" onMouseClicked="#deleteSelectedStudent" styleClass="simage-view">
-               <image>
-                  <Image url="@../assets/delete.png" />
-               </image>
-            </ImageView>
          </children>
       </Pane>
    </children>

@@ -63,28 +63,28 @@ public final class LoginController extends ControllerSupport {
             form.addRow(2, new Label("Confirm password:"), confirmationField);
 
             ButtonType createType = new ButtonType(
-                "Create administrator",
-                ButtonBar.ButtonData.OK_DONE
+                    "Create administrator",
+                    ButtonBar.ButtonData.OK_DONE
             );
             Dialog<ButtonType> dialog = new Dialog<>();
             dialog.initOwner(AppContext.stage());
             dialog.setTitle("First administrator setup");
             dialog.setHeaderText(
-                "Create the administrator account used to access ISKOllect."
+                    "Create the administrator account used to access ISKOllect."
             );
             dialog.getDialogPane().setContent(form);
             dialog.getDialogPane().getButtonTypes().addAll(
-                createType,
-                ButtonType.CANCEL
+                    createType,
+                    ButtonType.CANCEL
             );
 
             Button createButton = (Button) dialog.getDialogPane().lookupButton(createType);
             createButton.addEventFilter(javafx.event.ActionEvent.ACTION, event -> {
                 try {
                     AppContext.service().createInitialAdmin(
-                        usernameField.getText(),
-                        newPasswordField.getText(),
-                        confirmationField.getText()
+                            usernameField.getText(),
+                            newPasswordField.getText(),
+                            confirmationField.getText()
                     );
                     showSuccess("The administrator account was created. You may now log in.");
                 } catch (Exception exception) {
@@ -109,6 +109,8 @@ public final class LoginController extends ControllerSupport {
             loginButton.setDisable(needed);
             passwordField.setDisable(needed);
         } catch (Exception exception) {
+            System.err.println("[DEBUG] needsInitialAdmin() failed:");
+            exception.printStackTrace();
             createAdminButton.setManaged(false);
             createAdminButton.setVisible(false);
         }
